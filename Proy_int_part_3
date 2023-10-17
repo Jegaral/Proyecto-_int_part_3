@@ -1,18 +1,13 @@
 import os
+import msvcrt
 
-def clear_terminal():
-    os.system('cls' if os.name == 'nt' else 'clear')
+def clear_and_print(number):
+    os.system('cls' if os.name=='nt' else 'clear')
+    print(number)
 
-def main():
-    number = 0
-    while number <= 50:
-        # Espera a que el usuario presione la tecla 'n'
-        input("Presiona 'n' y luego Enter para continuar...")
-        
-        clear_terminal()  # Borra la terminal
-        
-        print(f"Nuevo número: {number}")
-        number += 1
-
-if __name__ == "__main__":
-    main()
+number = 0
+while number < 50:
+    clear_and_print(number)
+    if msvcrt.kbhit():
+        if msvcrt.getch() == b'n':
+            number += 1 
